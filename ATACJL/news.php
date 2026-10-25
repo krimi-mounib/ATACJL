@@ -1,0 +1,10 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__.'/includes/functions.php';
+$lang=lang();
+$news=db()->query('SELECT * FROM news WHERE is_published=1 AND published_at<=NOW() ORDER BY published_at DESC')->fetchAll();
+$pageTitle='News';require __DIR__.'/includes/header.php';
+?>
+<section class="section"><div class="container"><div class="public-page-heading"><p class="eyebrow"><?=e(setting('news_eyebrow',"STORIES & UPDATES"))?></p><h1 class="section-title"><?=e(setting('news_title',"News from ATACJL."))?></h1><p class="copy"><?=e(setting('news_intro',"Highlights, announcements and stories from the people and activities that make our community."))?></p></div>
+<?php if($news):?><div class="grid-3 news-list-grid"><?php foreach($news as $n):?><article class="card"><div class="card-media"><?php if($n['featured_image']):?><img loading="lazy" src="<?=e($n['featured_image'])?>" alt="<?=e(localTitle($n,$lang))?>"><?php else:?><div class="media-placeholder media-news" aria-hidden="true"><span>ATACJL · STORIES</span></div><?php endif;?></div><div class="card-body"><div class="meta-row"><span class="tag"><?=e($n['category'])?></span><time datetime="<?=e(date('Y-m-d',strtotime($n['published_at'])))?>"><?=e(date('M j, Y',strtotime($n['published_at'])))?></time></div><h2 class="content-card-title"><?=e(localTitle($n,$lang))?></h2><p><?=e(mb_strimwidth(strip_tags(localBody($n,$lang)),0,185,'…'))?></p><a class="text-link" href="article.php?id=<?=$n['id']?>"><?=e(setting('news_card_link','Read story'))?> <span aria-hidden="true">→</span></a></div></article><?php endforeach;?></div><?php else:?><div class="empty-state"><span class="empty-icon">✳</span><h2><?=e(setting('news_empty_title','Stories coming soon'))?></h2><p><?=e(setting('news_empty_text',"When ATACJL publishes updates and community stories, you'll find them here."))?></p><a class="btn ghost" href="<?=APP_URL?>/projects.php"><?=e(setting('news_empty_link','Explore our projects'))?></a></div><?php endif;?></div></section>
+<?php require __DIR__.'/includes/footer.php'; ?>
