@@ -12,6 +12,18 @@ ATACJL is a PHP and MySQL website for a community association in Hammam Sousse, 
 - **Security controls:** Password hashing, CSRF protection for form submissions, role checks, prepared database queries, escaped output, and session-cookie protections.
 - **Responsive layout:** Shared styling for desktop and mobile screens, with separate navigation for public pages, members, and administrators.
 
+## Screenshots
+
+### Homepage
+![ATACJL homepage](screenshots/welcom.png)
+
+### admin workspace
+![ATACJL admin workspace page](screenshots/admin_workspace.png)
+
+### member dashboard
+![ATACJL member dashboard page](screenshots/member_dashboard.png)
+
+
 ## Technology
 
 - PHP 8.2 or later
