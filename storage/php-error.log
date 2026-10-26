@@ -1,0 +1,2 @@
+[26-Oct-2026 19:50:34 Africa/Tunis] ATACJL event overview failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'atacjl_db.event_members' doesn't exist
+[26-Oct-2026 19:50:55 Africa/Tunis] PHP Warning:  Undefined array key "occupation" in C:\Users\HP\Downloads\ATACJL_Enhanced_v11_fixed\ATACJL_Redesigned\member\profile.php on line 2
